@@ -1,0 +1,254 @@
+/* RALD Connect Admin — brand: #00FF88 on #080D14 */
+:root {
+    --rald-green:   #00FF88;
+    --rald-surface: #080D14;
+    --rald-border:  rgba(255,255,255,0.07);
+    --rald-text:    #e4e4e7;
+    --rald-muted:   #71717a;
+}
+
+#rald-connect-admin {
+    min-height: 600px;
+    background: var(--rald-surface);
+    border-radius: 8px;
+    margin-top: 20px;
+    padding: 32px;
+    color: var(--rald-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.rald-connect-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rald-border);
+}
+
+.rald-connect-header h1 {
+    color: var(--rald-green);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.rald-connect-badge {
+    background: rgba(0,255,136,0.12);
+    color: var(--rald-green);
+    border: 1px solid rgba(0,255,136,0.25);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.rald-settings-section {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--rald-border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.rald-settings-section h2 {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+}
+
+.rald-form-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.rald-form-row label {
+    color: var(--rald-muted);
+    font-size: 0.875rem;
+}
+
+.rald-form-row input[type="text"],
+.rald-form-row input[type="url"],
+.rald-form-row select {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--rald-border);
+    border-radius: 6px;
+    color: var(--rald-text);
+    padding: 8px 12px;
+    font-size: 0.875rem;
+    width: 100%;
+}
+
+.rald-form-row input:focus,
+.rald-form-row select:focus {
+    outline: none;
+    border-color: var(--rald-green);
+    box-shadow: 0 0 0 2px rgba(0,255,136,0.15);
+}
+
+.rald-btn-save {
+    background: var(--rald-green);
+    color: #080D14;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.rald-btn-save:hover { opacity: 0.85; }
+.rald-btn-save:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.rald-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+}
+.rald-status-dot.ok   { background: var(--rald-green); }
+.rald-status-dot.err  { background: #ef4444; }
+.rald-status-dot.idle { background: var(--rald-muted); }
+
+/* Auth forms (frontend) */
+.rald-auth-form {
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 40px 32px;
+    background: var(--rald-surface);
+    border: 1px solid var(--rald-border);
+    border-radius: 12px;
+    color: var(--rald-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.rald-auth-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.rald-auth-brand {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--rald-green);
+    letter-spacing: 0.1em;
+}
+
+.rald-auth-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 24px 0;
+}
+
+.rald-form-group {
+    margin-bottom: 16px;
+}
+
+.rald-form-group label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--rald-muted);
+    margin-bottom: 6px;
+}
+
+.rald-input {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--rald-border);
+    border-radius: 6px;
+    color: #fff;
+    padding: 10px 14px;
+    font-size: 0.9375rem;
+    box-sizing: border-box;
+    transition: border-color 0.15s;
+}
+
+.rald-input:focus {
+    outline: none;
+    border-color: var(--rald-green);
+}
+
+.rald-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.rald-btn-primary {
+    background: var(--rald-green);
+    color: #080D14;
+}
+
+.rald-btn-primary:hover { opacity: 0.85; }
+.rald-btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.rald-btn-spinner::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(8,13,20,0.3);
+    border-top-color: #080D14;
+    border-radius: 50%;
+    animation: rald-spin 0.7s linear infinite;
+}
+
+@keyframes rald-spin { to { transform: rotate(360deg); } }
+
+.rald-alert {
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    margin-bottom: 16px;
+}
+
+.rald-alert-error {
+    background: rgba(239,68,68,0.1);
+    border: 1px solid rgba(239,68,68,0.3);
+    color: #fca5a5;
+}
+
+.rald-auth-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.875rem;
+    color: var(--rald-muted);
+}
+
+.rald-auth-footer a { color: var(--rald-green); text-decoration: none; }
+.rald-auth-footer a:hover { text-decoration: underline; }
+
+.rald-sso-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--rald-surface);
+    border: 1px solid var(--rald-green);
+    color: var(--rald-green);
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: background 0.15s;
+}
+
+.rald-sso-button:hover { background: rgba(0,255,136,0.08); }

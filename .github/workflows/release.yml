@@ -1,0 +1,77 @@
+name: Build & Release
+
+on:
+  push:
+    branches: [main]
+    tags:     ['v*']
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build Plugin
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install JS dependencies
+        run: npm install
+
+      - name: Build admin React app
+        run: npm run build
+
+      - name: Verify built assets exist
+        run: |
+          test -f rald-connect/admin/js/dist/admin.js && echo "✅ admin.js built"
+
+      - name: Upload plugin artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rald-connect-plugin
+          path: rald-connect/
+          retention-days: 30
+
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install & build
+        run: npm install && npm run build
+
+      - name: Zip plugin for distribution
+        run: zip -r rald-connect-${{ github.ref_name }}.zip rald-connect/ -x "*/node_modules/*" -x "*/.git/*"
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: rald-connect-${{ github.ref_name }}.zip
+          body: |
+            ## RALD Connect ${{ github.ref_name }}
+
+            WordPress plugin connecting sites to the RALD Identity platform.
+
+            ### Installation
+            1. Download `rald-connect-${{ github.ref_name }}.zip`
+            2. Upload to WordPress → Plugins → Add New → Upload Plugin
+            3. Activate and configure under Settings → RALD Connect
+
+            ### Requirements
+            - WordPress 5.8+
+            - PHP 7.4+
+            - auth.rald.cloud must be reachable
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

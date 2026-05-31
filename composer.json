@@ -1,0 +1,17 @@
+{
+  "name": "ostinato-loop/rald-connect",
+  "description": "RALD Connect WordPress Plugin",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0+",
+  "require": {
+    "php": ">=7.4"
+  },
+  "autoload": {
+    "classmap": ["rald-connect/includes/", "rald-connect/admin/"]
+  },
+  "config": {
+    "platform": {
+      "php": "7.4"
+    }
+  }
+}
